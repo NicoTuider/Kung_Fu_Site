@@ -32,7 +32,7 @@ class Film extends kung_fu implements kung_fu_interface {
         $qrCode = new QrCode($this->getMovieURI());
 
         header('Content-Type: '.$qrCode->getContentType());
-        echo $qrCode->writeString();
+        return $qrCode->writeString();
     }
 }
 
