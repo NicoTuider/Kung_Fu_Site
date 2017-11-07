@@ -17,6 +17,7 @@ class Film extends kung_fu implements kung_fu_interface {
 
     public function getMovieInfoAsJSON(): string
     {
+        header('Content-Type:application/json');
         $json = "{\xA".
             '"name": "'.$this->getName().'",'."\xA".
             '"rating": "'.$this->getRating().'",'."\xA".
@@ -36,4 +37,18 @@ class Film extends kung_fu implements kung_fu_interface {
 }
 
 $myFilm = new Film("Bruce Lee - Der Mann mit der Todeskralle",5,"https://www.youtube.com/watch?v=80wXmIcyZwk");
+
+if(isset($_GET['format'])){
+    if($_GET['format'] == 'json'){
+        echo $myFilm->getMovieInfoAsJSON();
+    }else if ($_GET['format'] == 'qr'){
+        echo $myFilm->getMovieQRCodeForBrowser();
+    }
+}else{
+    echo "<h1>".$myFilm->getName()."</h1>";
+    echo "<a href='index.php/?format=json'>Filminfo als JSON</a><br>";
+    echo "<a href='index.php/?format=qr'>Filminfo als QR-Code</a>";
+
+}
+
 
