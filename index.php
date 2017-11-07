@@ -48,7 +48,6 @@ if(isset($_GET['format'])){
     echo "<h1>".$myFilm->getName()."</h1>";
     echo "<a href='index.php/?format=json'>Filminfo als JSON</a><br>";
     echo "<a href='index.php/?format=qr'>Filminfo als QR-Code</a>";
-
 }
 
 
